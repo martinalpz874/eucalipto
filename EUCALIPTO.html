@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eucalipto-Feria Circular</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #F5E7C4;
+      color: #2F465F;
+    }
+
+
+    header {
+      background-color: #396567;
+      color: white;
+      min-height: 245px;
+      padding: 25px 8%;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      align-items: center;
+      column-gap: 40px;
+    }
+
+
+    header h1 {
+      grid-column: 1;
+      grid-row: 1;
+      text-align: left;
+      font-size: 2.3rem;
+      margin-bottom: 5px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      grid-column: 1;
+      grid-row: 2;
+      text-align: left;
+      font-size: 1rem;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      margin-bottom: 18px;
+    }
+
+
+    .eucalipto {
+      grid-column: 2;
+      grid-row: 1 / 5;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-self: center;
+    }
+
+    .eucalipto img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .redes {
+      display: flex;
+      justify-content:flex-start;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 5px;
+      padding-left: 5px;
+    }
+
+    .whatsapp,.mercadopago,.instagram {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .whatsapp img, .mercadopago img, .instagram img {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .whatsapp a, .mercadopago a, .instagram a {
+      text-decoration: none;
+      padding: 8px 11px;
+      border-radius: 8px;
+      color: white;
+      font-size: 12px;
+      transition: 0.3s;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .whatsapp a {
+      background-color: #98B4B6;
+    }
+
+    .whatsapp a:hover {
+      background-color: #7FA2A4;
+      transform: translateY(-2px);
+    }
+
+    .mercadopago a {
+      background-color: #98B4B6;
+    }
+
+    .mercadopago a:hover {
+      background-color: #7FA2A4;
+      transform: translateY(-2px);
+    }
+
+    .instagram a {
+      background-color: #98B4B6;
+    }
+
+    .instagram a:hover {
+      background-color: #7FA2A4;
+      transform: translateY(-2px);
+    }
+
+   
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .grid-productos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .producto {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(57, 101, 103, 0.18);
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+      transition: 0.3s;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(57, 101, 103, 0.25);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background-color: #fafafa;
+    }
+
+    .producto-info {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .producto-info h2 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #2F465F;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .producto-info p {
+      font-size: 0.9rem;
+      color: #666;
+      flex-grow: 1;
+      margin-bottom: 10px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .precio {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #396567;
+      margin-bottom: 10px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .boton-comprar {
+      background-color: #396567;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 7px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .boton-comprar:hover {
+      background-color: #2F465F;
+      transform: translateY(-1px);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #396567;
+      color: white;
+      margin-top: 40px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .ventana-fondo {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(47, 70, 95, 0.65);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .ventana-alias {
+      background-color: #F5E7C4;
+      width: 370px;
+      padding: 35px 30px 30px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 35px rgba(47, 70, 95, 0.35);
+      border: 3px solid #98B4B6;
+    }
+
+    .ventana-alias h2 {
+      margin-bottom: 12px;
+      color: #396567;
+      font-size: 1.6rem;
+    }
+
+    .ventana-alias p {
+      margin-bottom: 18px;
+      color: #555;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .alias {
+      background-color: white;
+      color: #396567;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 22px;
+      border: 2px dashed #98B4B6;
+      letter-spacing: 1px;
+    }
+
+    .boton-cerrar {
+      background-color: #396567;
+      color: white;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .boton-cerrar:hover {
+      background-color: #2F465F;
+      transform: translateY(-2px);
+    }
+
+    .cerrar {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      border: none;
+      background: none;
+      color: #396567;
+      font-size: 27px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cerrar:hover {
+      color: #2F465F;
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 20px;
+      }
+
+      .contenido-header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .eucalipto {
+        width: 120px;
+        height: 120px;
+      }
+
+      .eucalipto img {
+        width: 110px;
+        height: 110px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .redes {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .ventana-alias {
+        width: 90%;
+      }
+    }
+
+      .carrito-boton{
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        background:#396567;
+        color:white;
+        padding:14px;
+        border-radius:50px;
+        cursor:pointer;
+        font-weight:bold;
+        z-index:999999;
+        box-shadow:0 5px 15px rgba(0,0,0,0.3);
+        user-select:none;
+      }
+
+      .carrito-panel{
+        display:none;
+        position:fixed;
+        bottom:80px;
+        right:20px;
+        background:white;
+        border-radius:15px;
+        width:340px;
+        max-width:90vw;
+        z-index:999999;
+        box-shadow:0 8px 25px rgba(0,0,0,0.3);
+        border:2px solid #396567;
+        overflow:hidden;
+      }
+
+      .carrito-panel.abierto{
+        display:block;
+      }
+
+      .carrito-item{
+        display:flex;
+        justify-content:space-between;
+        padding:8px 0;
+        border-bottom:1px solid #eee;
+        font-size:0.9rem;
+      }
+
+    
+       .boton-comprar.agregado{
+        background:#25D366 !important;
+      }
+</style>
+</head>
+
+<body>
+
+  <header> 
+
+  <div class="eucalipto"> 
+    <img src="eucalipto.jfif" alt="Foto"> 
+  </div> 
+
+  <h1>EUCALIPTO</h1> 
+  <p>Segunda vuelta, nuevas historias.</p> 
+
+  <div class="redes">
+
+    <div class="whatsapp"> 
+      <img src="eucalipto fotos/whatsapp.jfif" alt="">
+      <a href="https://wa.me/+5493512316444">Mandanos un Whatsapp</a>
+    </div>
+
+    <div class="mercadopago">
+    <img src="eucalipto fotos/mercado pago.jfif" alt="">
+    <a href="#" onclick="mostrarAlias(); return false;">
+        Pagar con Mercado Pago
+    </a>
+    </div>
+
+   <div class="instagram">
+      <img src="eucalipto fotos/instagram.jfif" alt="Instagram">
+      <a href="https://www.instagram.com/eucalipto._cr?stkn=Y3d6MDN0OGl6bnhp+" target="_blank">
+        Seguinos en Instagram!
+      </a>
+    </div>
+
+  </div>
+
+</header>
+
+  <main>
+    <div class="grid-productos">
+
+      <div class="producto">
+        <img src="eucalipto fotos/top violeta MAR.jfif" alt="TOP VIOLETA">
+        <div class="producto-info">
+          <h2>Top violeta</h2>
+          <p>Top color violeta talle S, ideal para usar tanto de día como de noche.</p>
+          <span class="precio">$2.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/remera rosa MAR.jfif" alt="REMERA ROSA">
+        <div class="producto-info">
+          <h2>Remera rosa</h2>
+          <p>Remera color rosa talle M, ideal para usar de día.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/top color azul MAR.jfif" alt="TOP COLOR AZUL">
+        <div class="producto-info">
+          <h2>Top azul</h2>
+          <p>Top color azul talle S, de hilo y muy fresca.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/jean negro MAR.jfif" alt="JEAN COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Jean negro tiro alto</h2>
+          <p>Jean color negro tiro alto talle 44, para usar tanto de día como de noche.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/top brilloso MAR.jfif" alt="TOP BRILLOSO">
+        <div class="producto-info">
+          <h2>Top brilloso</h2>
+          <p>Top color gris oscuro brilloso corte princesa talle S, ideal para salir de noche.</p>
+          <span class="precio">3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/top rojo MAR.jfif" alt="TOP ROJO">
+        <div class="producto-info">
+          <h2>Top rojo</h2>
+          <p>Top color rojo talle S, ideal para usar tanto de día como de noche.</p>
+          <span class="precio">$2.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/corset azul MAR.jfif" alt="CORSET AZUL">
+        <div class="producto-info">
+          <h2>Corset azul</h2>
+          <p>Corset color azul talle 2, ideal para usar de noche.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/short blanco MAR.jfif" alt="SHORT BLANCO">
+        <div class="producto-info">
+          <h2>Short blanco</h2>
+          <p>Short blanco con cinturon talle M, ideal para usar de noche.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/pollera con volados MAR.jfif" alt="POLLERA CON VOLADOS">
+        <div class="producto-info">
+          <h2>Pollera con volados</h2>
+          <p>Pollera color negro con volados, ideal para salir.</p>
+          <span class="precio">$5.500</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/VESTIDO MAR.jfif" alt="VESTIDO">
+        <div class="producto-info">
+          <h2>Vestido largo</h2>
+          <p>Vestido color negro largo, con espalda descubierta.</p>
+          <span class="precio">$7.500</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/remera corte princesa MAR.jfif" alt="REMERA CORTE PRINCESA">
+        <div class="producto-info">
+          <h2>Remera corte princesa</h2>
+          <p>Remera color negro, talle 2. </p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/short color salmón MAR.jfif" alt="SHORT SALMÓN">
+        <div class="producto-info">
+          <h2>Short salmón</h2>
+          <p>Short de algodón color salmón talle 3.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/mini MAR.jfif" alt="POLLERA MINI">
+        <div class="producto-info">
+          <h2>Pollera mini de jean</h2>
+          <p>Pollera mini de jean color azul oscuro talle 42.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/pollera de jean MAR.jfif" alt="POLLERA DE JEAN">
+        <div class="producto-info">
+          <h2>Pollera de jean</h2>
+          <p>Pollera de jean color celeste talle 38.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/short de jean celeste MAR.jfif" alt="SHORT DE JEAN">
+        <div class="producto-info">
+          <h2>Short de jean</h2>
+          <p>Short de jean color azul claro talle 36, ideal para usar de día.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/chalina verde MAR.jfif" alt="CHALINA VERDE">
+        <div class="producto-info">
+          <h2>Chalina de lana</h2>
+          <p>Chalina de lana color verde.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/chalina rosa MAR.jfif" alt="CHALINA ROSA">
+        <div class="producto-info">
+          <h2>Chalina de lana</h2>
+          <p>Chalina de lana color rosa claro con brillo.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/POLERA MAR.jfif" alt="POLERA">
+        <div class="producto-info">
+          <h2>Polera</h2>
+          <p>Polera color negro, con cuello enrrollable.</p>
+          <span class="precio">$3.900</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/remera de barbie MAR.jfif" alt="REMERA DE BARBIE">
+        <div class="producto-info">
+          <h2>Remera infantil</h2>
+          <p>Remera infantil mangas largas de barbie talle 10.</p>
+          <span class="precio">$3.500</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/campera fucsia MAR.jfif" alt="CAMPERA FUCSIA">
+        <div class="producto-info">
+          <h2>Campera</h2>
+          <p>Campera infantil color fucsia talle xs.</p>
+          <span class="precio">$8.800</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/buzo gris MAR.jfif" alt="BUZO GRIS">
+        <div class="producto-info">
+          <h2>Buzo</h2>
+          <p>Buzo color gris con cierre talle 2, de tela liviana.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/zapatillar MAR.jfif" alt="ZAPATILLAS">
+        <div class="producto-info">
+            <h2>Zapatillas deportivas</h2>
+            <p>zapatillas deportivas color negro con detalles rosas, número 35.</p>
+            <span class="precio">$10.000</span>
+            <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/biker MAR.jfif" alt="BIKER">
+        <div class="producto-info">
+          <h2>Biker</h2>
+          <p>Biker deportiva color rosa talle XS, con bolsillo detras de la cintura.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/conjunto deportivo MAR.jfif" alt="CONJUNTO DEPORTIVO">
+        <div class="producto-info">
+          <h2>Conjunto deportivo</h2>
+          <p>Campera y calza deportiva color negro con fucsia talle 2.</p>
+          <span class="precio">$8.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/jean color violeta MORE.jfif" alt="JEAN COLOR VIOLETA">
+        <div class="producto-info">
+          <h2>Jean</h2>
+          <p>Jean color violeta talle 40.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/jean color azul mujer MORE.jfif" alt="JEAN COLOR AZUL OSCURO">
+        <div class="producto-info">
+          <h2>Jean</h2>
+          <p>Jean color azul oscuro de mujer, talle 36.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/bermuda de jean oscura MORE.jfif" alt="BERMUDA DE JEAN">
+        <div class="producto-info">
+          <h2>Bermuda</h2>
+          <p>Bermuda de jean color azul oscuro de hombre talle M.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/saco blanco MORE.jfif" alt="SACO BLANCO">
+        <div class="producto-info">
+          <h2>Saco</h2>
+          <p>saco color blanco de mujer talle M.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/calza MORE.jfif" alt="CALZA DE VARIOS COLORES">
+        <div class="producto-info">
+          <h2>Calza</h2>
+          <p>Calza de mujer de varios colores talle S.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/reemera floral MORE.jfif" alt="REMERA FLORAL">
+        <div class="producto-info">
+          <h2>Remera floral</h2>
+          <p>Remera de un solo hombro con estilo floral talle M, de tela fresca.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/PULLOVER MORE.jfif" alt="PULLOVER">
+        <div class="producto-info">
+          <h2>Pullover escolar</h2>
+          <p>Pullover escolar color verde talle 14.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/BLUSA BLANCA more.jfif" alt="BLUSA BLANCA">
+        <div class="producto-info">
+          <h2>Blusa color blanco</h2>
+          <p>Blusa color blanco con detalles tejidos talle M.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/blusa color rojo MORE.jfif" alt="BLUSA ROJA">
+        <div class="producto-info">
+          <h2>Blusa color rojo</h2>
+          <p>Blusa color rojo sin mangas y con detalle descubierto en la espalda, talle 42.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/REMERA CON LUNARES more.jfif" alt="REMERA CON LUNARES">
+        <div class="producto-info">
+          <h2>Remera mangas largas</h2>
+          <p>Remera mangas largas color salmón con lunares y estampa, talle S.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/saco floreado MORE.jfif" alt="SACO FLOREADO">
+        <div class="producto-info">
+          <h2>Saco floreado</h2>
+          <p>Saco floreado mangas largas y de tela fresca, talle S</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/blusa color rosa MORE.jfif" alt="BLUSA COLOR ROSA">
+        <div class="producto-info">
+          <h2>Blusa rosa</h2>
+          <p>Blusa color rosa, talle S.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/pantalón formal MORE.jfif" alt="PANTALÓN FORMAL">
+        <div class="producto-info">
+          <h2>Pantalón escolar</h2>
+          <p>Pantalón formal escolar de hombre, talle 36.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/bermuda color verde MORE.jfif" alt="BERMUDA VERDE">
+        <div class="producto-info">
+          <h2>Bermuda</h2>
+          <p>Bermuda color verde de hombre, talle L.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/vestido color azul MORE.jfif" alt="VESTIDO AZUL">
+        <div class="producto-info">
+          <h2>Vestido estampado</h2>
+          <p>Vestido color azul con estampado de mariposas, talle S.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/vestido color rojo MORE.jfif" alt="VESTIDO ROJO">
+        <div class="producto-info">
+          <h2>Vestido</h2>
+          <p>Vestido color rojo con apertura en ambas piernas, talle M.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/campera de jean MORE.jfif" alt="CAMPERA DE JEAN">
+        <div class="producto-info">
+          <h2>Campera de jean</h2>
+          <p>Campera de jean clásica, talle S.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/pollera escolar talle s MORE.jfif" alt="POLLERA ESCOLAR">
+        <div class="producto-info">
+          <h2>Pollera escolar</h2>
+          <p>Pollera escolar, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/vestido estampado color violeta MORE.jfif" alt="VESTIDO ESTAMPADO">
+        <div class="producto-info">
+          <h2>Vestido estampado</h2>
+          <p>Vestido color violeta estampado, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/musculosa color rosa MORE.jfif" alt="MUSCULOSA COLOR ROSA">
+        <div class="producto-info">
+          <h2>Musculosa</h2>
+          <p>Musculosa color rosa, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/chomba mangas largas MORE.jfif" alt="CHOMBA MANGAS LARGAS">
+        <div class="producto-info">
+          <h2>Chomba escolar</h2>
+          <p>Chomba escolar mangas largas, talle 16.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/musculosa color naranja MORE.jfif" alt="MUSCULOSA COLOR NARANJA">
+        <div class="producto-info">
+          <h2>Musculosa</h2>
+          <p>Musculosa color naranja, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/blusa estampada MORE.jfif" alt="BLUSA ESTAMPADA">
+        <div class="producto-info">
+          <h2>Blusa estampada</h2>
+          <p>Blusa mangas largas estampada, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/sueter color negro MORE.jfif" alt="SUETER COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Sueter</h2>
+          <p>Sueter color negro con detalles en color blanco, talle 40.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/buzo negro con estampa MORE.jfif" alt="BUZO NEGRO CON ESTAMPA">
+        <div class="producto-info">
+          <h2>Buzo con estampa</h2>
+          <p>Buzo color negro con estampa, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/saco color rosa talle s MORE.jfif" alt="SACO COLOR ROSA">
+        <div class="producto-info">
+          <h2>Saco con lunares</h2>
+          <p>Saco color rosa con lunares, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/saco color marrón talle s MORE.jfif" alt="SACO COLOR MARRÓN">
+        <div class="producto-info">
+          <h2>Saco con lunares</h2>
+          <p>Saco color marrón con lunares, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/campera escolar talle S MORE.jfif" alt="CAMPERA ESCOLAR">
+        <div class="producto-info">
+          <h2>Campera escolar</h2>
+          <p>Campera escolar, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/buzo azul talle s MORE.jfif" alt="BUZO AZUL">
+        <div class="producto-info">
+          <h2>Buzo</h2>
+          <p>Buzo color azul de hombre, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/remera color rosa talle S MORE.jfif" alt="REMERA ROSA">
+        <div class="producto-info">
+          <h2>Remera</h2>
+          <p>Remera color rosa mangas largas, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/remera verde talle s MORE.jfif" alt="REMERA VERDE">
+        <div class="producto-info">
+          <h2>Remera</h2>
+          <p>Remera color verde mangas cortas, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/chomba mangas cortas talle 16 MORE.jfif" alt="CHOMBA MANGAS CORTAS">
+        <div class="producto-info">
+          <h2>Chomba escolar</h2>
+          <p>Chomba escolar mangas cortas, talle 16.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/camisa color celeste talle 16 MORE.jfif" alt="CAMISA CELESTE">
+        <div class="producto-info">
+          <h2>Camisa</h2>
+          <p>Camisa color celeste, talle 16.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/camisa celeste talle S MORE.jfif" alt="CAMISA CELESTE">
+        <div class="producto-info">
+          <h2>Camisa</h2>
+          <p>Camisa color celeste, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/pantalón estampado talle s MORE.jfif" alt="PANTALON ESTAMPADO">
+        <div class="producto-info">
+          <h2>Pantalón estampado</h2>
+          <p>Pantalón estampado, talle S.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/jean de hombre talle s MORE.jfif" alt="JEAN DE HOMBRE">
+        <div class="producto-info">
+          <h2>Jean</h2>
+          <p>Jean de hombre color celeste, talle S.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/jean de hombre talle 38 MORE.jfif" alt="JEAN DE HOMBRE">
+        <div class="producto-info">
+          <h2>Jean</h2>
+          <p>jean de hombre color celeste, talle 38.</p>
+          <span class="precio">$7.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/sandalías MORE.jfif" alt="SANDALIAS">
+        <div class="producto-info">
+          <h2>Sandalias</h2>
+          <p>Sandalias color chocolate, número 36.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+
+      </div>
+       <div class="producto">
+        <img src="eucalipto fotos/zapatillas color negro MORE.jfif" alt="ZAPATILLAS COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Zapatillas</h2>
+          <p>Zapatillas negras de mujer, número 36.</p>
+          <span class="precio">$9.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/campera hello kitty S.jfif" alt="CAMPERA HELLO KITTY">
+        <div class="producto-info">
+          <h2>Campera infantil</h2>
+          <p>Campera de hello kitty infantil, talle 5.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+
+      </div>
+       <div class="producto">
+        <img src="eucalipto fotos/2 jean negro talle 44 S.jfif" alt="JEAN COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Jean</h2>
+          <p>jean color negro, talle 44.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/chomba mangas cortas talle 6 S.jfif" alt="CHOMBA MANGAS CORTAS">
+        <div class="producto-info">
+          <h2>Chomba escolar</h2>
+          <p>Chomba escolar mangas cortas, talle 6.</p>
+          <span class="precio">$2.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/1 jean negro talle 44 S.jfif" alt="JEAN COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Jean</h2>
+          <p>Jean color negro, talle 44.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/campera escolar talle 6 S.jfif" alt="CAMPERA ESCOLAR">
+        <div class="producto-info">
+          <h2>Campera escolar</h2>
+          <p>Campera escolar, talle 6.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/pantalón de e.f talle 12 S.jfif" alt="PANTALÓN EDUCACIÓN FÍSICA">
+        <div class="producto-info">
+          <h2>Pantalón escolar</h2>
+          <p>Pantalón escolar de educación física, talle 12.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/Jean rasgado S.jfif" alt="JEAN RASGADO">
+        <div class="producto-info">
+          <h2>Jean rasgado</h2>
+          <p>Jean rasgado color celeste con puños, talle 40.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/chomba mangas largas promo S.jfif" alt="CHOMBA MANGAS LARGAS">
+        <div class="producto-info">
+          <h2>Chomba escolar</h2>
+          <p>Chomba escolar mangas largas, talle 8. <br>
+            PROMO!: 2 POR $3.000 </p>
+          <span class="precio">$2.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/campera camuflada S.jfif" alt="CAMPERA CAMUFLADA">
+        <div class="producto-info">
+          <h2>Campera infantil</h2>
+          <p>Campera color rosa camuflada infantil, talle 2.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/Pantalón educación física talle s S.jfif" alt="PANTALÓN EDUCACIÓN FÍSICA">
+        <div class="producto-info">
+          <h2>Pantalón escolar</h2>
+          <p>Pantalón escolar de educación física, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/pantalón educación fisica talle 14 S.jfif" alt="PANTALÓN EDUCACIÓN FÍSICA">
+        <div class="producto-info">
+          <h2>Pantalón escolar</h2>
+          <p>Pantalón escolar de educación física, talle 14.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/pantalon de vestir azul S.jfif" alt="PANTALÓN DE VESTIR">
+        <div class="producto-info">
+          <h2>Pantalón de vestir</h2>
+          <p>Pantalón de vestir color azul, talle 10.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+
+      </div>
+       <div class="producto">
+        <img src="eucalipto fotos/crocs color rosa S.jfif" alt="CROCS COLOR ROSA">
+        <div class="producto-info">
+          <h2>Crocs</h2>
+          <p>Crocs color rosa, número 23.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/crocs color negro S.jfif" alt="CROCS COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Crocs</h2>
+          <p>Crocs color negro, número 24.</p>
+          <span class="precio">$5.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/zapatos con abrojo S.jfif" alt="ZAPATOS CON ABROJO">
+        <div class="producto-info">
+          <h2>Zapatos</h2>
+          <p>Zapatos con abrojo, número 38.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/zapatos mocasines S.jfif" alt="ZAPATOS MOCASINES">
+        <div class="producto-info">
+          <h2>Zapatos mocasines</h2>
+          <p>Zapatos mocasines, número 39.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/zapato de niño num 29 S.jfif" alt="ZAPATOS DE NIÑO">
+        <div class="producto-info">
+          <h2>Zapatos</h2>
+          <p>Zapatos escolares, número 29.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/pullover escolar S.jfif" alt="PULLOVER ESCOLAR">
+        <div class="producto-info">
+          <h2>Pullover escolar</h2>
+          <p>Pullover escolar color verde, talle 6.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/camisa blanca S.jfif" alt="CAMISA BLANCA">
+        <div class="producto-info">
+          <h2>Camisa</h2>
+          <p>Camisa color blanco, talle 12.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/short color negro CYC.jfif" alt="SHORT COLOR NEGRO">
+        <div class="producto-info">
+          <h2>Short</h2>
+          <p>Short color negro, talle S.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/remera mangas largas estampada CYC.jfif" alt="REMERA ESTAMPADA MANGAS LARGAS">
+        <div class="producto-info">
+          <h2>Remera estampada</h2>
+          <p>Remera estampada mangas largas, talle M.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/campera color violeta deportiva CYC.jfif" alt="CAMPERA DEPORTIVA COLOR VIOLETA">
+        <div class="producto-info">
+          <h2>Campera</h2>
+          <p>Campera color violeta, talle L.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/camisa rayada CYC.jfif" alt="CAMISA RAYADA">
+        <div class="producto-info">
+          <h2>Camisa rayada</h2>
+          <p>Camisa con rayas de colores varios, talle XXL.</p>
+          <span class="precio">$2.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/musculosa color violeta CYC.jfif" alt= "MUSCULOSA COLOR VIOLETA">
+        <div class="producto-info">
+          <h2>Musculosa</h2>
+          <p>Musculosa color violeta, talle S.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/remera violeta deportiva CYC.jfif" alt="REMERA DEPORTIVA COLOR VIOLETA">
+        <div class="producto-info">
+          <h2>Remera deportiva</h2>
+          <p>Remera deportiva color violeta, talle L.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/top color verde agua CYC.jfif" alt="Peluche Mono Trepador">
+        <div class="producto-info">
+          <h2>Top</h2>
+          <p>Top color verde agua, talle S.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/remera sin mangas amarilla CYC.jfif" alt="REMERA SIN MANGAS">
+        <div class="producto-info">
+          <h2>Remera</h2>
+          <p>Remera sin mangas color amarillo, talle L.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/top negro con estampa CYC.jfif" alt="TOP NEGRO CON ESTAMPA">
+        <div class="producto-info">
+          <h2>Top con estampa</h2>
+          <p>Top color negro con estampa, talle L.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/top mangas largas color gris CYC.jfif" alt="TOP MANGAS LARGAS COLOR GRIS">
+        <div class="producto-info">
+          <h2>Top</h2>
+          <p>Top mangas largas color gris, talle S.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/top marron claro CYC.jfif" alt="TOP COLOR MARRON">
+        <div class="producto-info">
+          <h2>Top</h2>
+          <p>Top color marrón claro, talle L.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/top color gris CYC.jfif" alt="TOP COLOR GRIS">
+        <div class="producto-info">
+          <h2>Top</h2>
+          <p>Top color gris, talle L.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/camisola CYC.jfif" alt="CAMISOLA">
+        <div class="producto-info">
+          <h2>Camisola</h2>
+          <p>Camisola, talle L.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+       <div class="producto">
+        <img src="eucalipto fotos/campera color rosa deportiva CYC.jfif" alt="campera deportiva">
+        <div class="producto-info">
+          <h2>Campera deportiva</h2>
+          <p>Campera deportiva color rosa, talle L.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div> 
+
+      <div class="producto">
+        <img src="eucalipto fotos/remera color gris deportiva CYC.jfif" alt="REMERA DEPORTIVA COLOR GRIS">
+        <div class="producto-info">
+          <h2>Remera deportiva</h2>
+          <p>Remera deportiva color gris, talle XL.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/short de jean color celeste CYC.jfif" alt="SHORT DE JEAN">
+        <div class="producto-info">
+          <h2>Short de jean</h2>
+          <p>Short de jean color celeste, talle M.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/musculosa estampada color negro CYC.jfif" alt="MUSCULOSA ESTAMPADA">
+        <div class="producto-info">
+          <h2>Musculosa</h2>
+          <p>Musculosa color negro con estampa , talle L.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/remera corte princesa CYC.jfif" alt="REMERA CORTE PRINCESA">
+        <div class="producto-info">
+          <h2>Remera</h2>
+          <p>Remera corte princesa color blanco, talle M.</p>
+          <span class="precio">$3.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <div class="producto">
+        <img src="eucalipto fotos/camisa color natural CYC.jfif" alt="CAMISA">
+        <div class="producto-info">
+          <h2>Camisa</h2>
+          <p>Camisa color natural, talle XXL.</p>
+          <span class="precio">$4.000</span>
+          <button class="boton-comprar">Agregar al carrito</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Feria Circular, EUCALIPTO - Todos los derechos reservados</p>
+  </footer>
+
+  <div id="ventanaAlias" class="ventana-fondo">
+
+    <div class="ventana-alias">
+
+        <button class="cerrar" onclick="cerrarAlias()">×</button>
+
+        <h2>💳 Mercado Pago</h2>
+
+        <p>Podés realizar tu pago utilizando este alias:</p>
+
+        <div class="alias">
+            maarr.lpz
+        </div>
+
+        <button class="boton-cerrar" onclick="cerrarAlias()">
+            Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+function mostrarAlias() {
+    document.getElementById("ventanaAlias").style.display = "flex";
+}
+
+function cerrarAlias() {
+    document.getElementById("ventanaAlias").style.display = "none";
+}
+</script>
+
+<!-- CARRITO -->
+<div class="carrito-boton" onclick="toggleCarrito()">🛒 <span class="contador">0</span> | $<span class="total-mini">0</span></div>
+
+<div class="carrito-panel">
+  <div style="background:#396567;color:white;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-weight:bold">Mi Carrito</span><span onclick="toggleCarrito()" style="cursor:pointer;font-size:22px">×</span>
+  </div>
+  <div class="lista-carrito" style="padding:15px;max-height:300px;overflow-y:auto;"></div>
+  <div style="padding:15px;background:#F5E7C4;">
+    <p style="margin-bottom:12px"><b>Total: $<span class="total-final">0</span></b></p>
+    <button onclick="mandarWhatsapp()" style="background:#396567;color:white;border:none;padding:12px;width:100%;border-radius:8px;cursor:pointer;font-weight:bold;">📲 Enviar pedido por WhatsApp</button>
+    <button onclick="vaciarCarrito()" style="background:#eee;border:none;padding:8px;width:100%;border-radius:8px;margin-top:8px;cursor:pointer;">Vaciar carrito</button>
+  </div>
+</div>
+
+
+
+<script>
+let carrito = JSON.parse(localStorage.getItem('eucalipto_carrito') || '[]');
+
+function parsePrecio(t){ return parseInt(t.replace(/\$|\.|\s/g,'')) || 0; }
+function guardar(){ localStorage.setItem('eucalipto_carrito', JSON.stringify(carrito)); actualizarVista(); }
+
+function agregarAlCarritoDesdeBoton(btn){
+  const card = btn.closest('.producto-info');
+  const nombre = card.querySelector('h2').innerText;
+  const precio = parsePrecio(card.querySelector('.precio').innerText);
+  let existente = carrito.find(i => i.nombre === nombre);
+  if(existente){ existente.cantidad += 1; } else { carrito.push({nombre, precio, cantidad:1}); }
+  guardar();
+  btn.innerText = "¡Agregado! ✓";
+  btn.classList.add('agregado');
+  setTimeout(()=>{btn.innerText="Agregar al carrito"; btn.classList.remove('agregado')},1200);
+}
+
+function actualizarVista(){
+  let total=0, cant=0, html="";
+  carrito.forEach((item,i)=>{
+    total+=item.precio*item.cantidad; 
+    cant+=item.cantidad;
+    html+=`<div class="carrito-item"><span>${item.cantidad}x ${item.nombre}</span><span>$${item.precio*item.cantidad} <span onclick="borrarItem(${i})" style="color:red;cursor:pointer;margin-left:5px">✕</span></span></div>`;
+  });
+  if(carrito.length===0) html=`<p style="color:#888">Carrito vacío</p>`;
+  document.querySelector('.lista-carrito').innerHTML=html;
+  document.querySelector('.contador').innerText=cant;
+  document.querySelector('.total-mini').innerText=total;
+  document.querySelector('.total-final').innerText=total;
+}
+
+function toggleCarrito(){ document.querySelector('.carrito-panel').classList.toggle('abierto'); }
+function borrarItem(i){ carrito.splice(i,1); guardar(); }
+function vaciarCarrito(){ carrito=[]; guardar(); }
+
+function mandarWhatsapp(){
+  if(carrito.length===0) return alert("El carrito está vacío");
+  let total = carrito.reduce((a,i)=>a+i.precio*i.cantidad,0);
+  let mensaje = `Hola Eucalipto! Quiero comprar:%0A`;
+  carrito.forEach(item=>{ mensaje+=`• ${item.cantidad}x ${item.nombre} - $${item.precio*item.cantidad}%0A`; });
+  mensaje+=`%0ATotal: $${total}`;
+  window.open(`https://wa.me/5493512316444?text=${mensaje}`,'_blank');
+}
+
+document.querySelectorAll('.boton-comprar').forEach(btn=>{
+  btn.addEventListener('click', ()=> agregarAlCarritoDesdeBoton(btn));
+});
+
+actualizarVista();
+</script>
+
+</body>
+</html>
